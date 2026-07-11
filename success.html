@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Suscripción activa! — ApplyFast</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0b0c10; --surface:#13151c; --border:rgba(255,255,255,0.08); --accent:#4f8ef7; --accent2:#7c5cfc; --text:#e8eaf2; --muted:#6b7280; --green:#34d399; }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .card {
+    background:var(--surface); border:1px solid var(--border); border-radius:20px;
+    padding:40px 36px; max-width:480px; width:100%; text-align:center;
+  }
+  .success-icon {
+    width:60px; height:60px; border-radius:50%;
+    background:rgba(52,211,153,0.12); border:2px solid rgba(52,211,153,0.3);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:28px;
+  }
+  h1 { font-size:24px; font-weight:800; margin-bottom:8px; }
+  .subtitle { color:var(--muted); font-size:15px; margin-bottom:32px; line-height:1.6; }
+  .key-section { text-align:left; margin-bottom:28px; }
+  .key-label { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); margin-bottom:8px; }
+  .key-box {
+    background:#0b0c10; border:1px solid rgba(52,211,153,0.3);
+    border-radius:10px; padding:14px 16px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .key-value {
+    font-family:'Courier New', monospace; font-size:13px; color:var(--green);
+    word-break:break-all; line-height:1.5;
+  }
+  .copy-btn {
+    flex-shrink:0; background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.25);
+    color:var(--green); font-size:12px; font-weight:600; padding:6px 12px; border-radius:7px;
+    cursor:pointer; transition:all 0.2s; white-space:nowrap;
+  }
+  .copy-btn:hover { background:rgba(52,211,153,0.2); }
+  .copy-btn.copied { background:rgba(52,211,153,0.25); }
+  .warning {
+    background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2);
+    border-radius:10px; padding:12px 14px; font-size:13px; color:#d4a017;
+    text-align:left; margin-bottom:28px; line-height:1.6;
+  }
+  .steps { text-align:left; margin-bottom:28px; }
+  .steps h3 { font-size:14px; font-weight:700; margin-bottom:12px; }
+  .step { display:flex; gap:12px; margin-bottom:12px; align-items:flex-start; }
+  .step-num { width:22px; height:22px; border-radius:50%; background:var(--accent); color:white; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .step p { font-size:13.5px; color:var(--muted); line-height:1.5; }
+  .step strong { color:var(--text); }
+  .no-key { background:rgba(79,142,247,0.08); border:1px solid rgba(79,142,247,0.2); border-radius:10px; padding:14px; font-size:13px; color:var(--muted); text-align:left; line-height:1.6; }
+  .home-link { display:inline-flex; align-items:center; gap:6px; color:var(--muted); font-size:13px; text-decoration:none; margin-top:8px; }
+  .home-link:hover { color:var(--text); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="success-icon">✓</div>
+  <h1>¡Suscripción activada!</h1>
+  <p class="subtitle">Tu suscripción a ApplyFast Premium está activa.<br>Copiá tu clave de licencia para activar la extensión.</p>
+
+  <div id="key-section" class="key-section" style="display:none">
+    <div class="key-label">🔑 Tu clave de licencia</div>
+    <div class="key-box">
+      <div class="key-value" id="key-display">Cargando...</div>
+      <button class="copy-btn" id="copy-btn" onclick="copyKey()">Copiar</button>
+    </div>
+  </div>
+
+  <div id="no-key-section" class="no-key" style="display:none">
+    <strong>Tu suscripción fue procesada.</strong> Para encontrar tu clave de licencia:<br><br>
+    1. Abrí mercadopago.com.ar<br>
+    2. Andá a <strong>Actividad → Suscripciones → ApplyFast</strong><br>
+    3. El número largo en la URL de esa página es tu clave de licencia.
+  </div>
+
+  <div class="warning">
+    ⚠️ <strong>Guardá esta clave ahora.</strong> La necesitás para activar la extensión. Si la perdés, podés encontrarla en Mercado Pago → Suscripciones → ApplyFast.
+  </div>
+
+  <div class="steps">
+    <h3>Cómo activar ApplyFast Premium</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <p>Abrí la extensión <strong>ApplyFast</strong> en Chrome haciendo clic en el ícono</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p>Andá a la pestaña <strong>Ajustes</strong></p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p>Pegá tu clave en el campo <strong>"Clave de licencia Premium"</strong> y hacé clic en <strong>Activar</strong></p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <p>¡Listo! Todos los portales quedan desbloqueados automáticamente</p>
+    </div>
+  </div>
+
+  <a href="/" class="home-link">← Volver al inicio</a>
+</div>
+
+<script>
+  // Mercado Pago redirige a back_url con ?preapproval_id=XXX en la URL
+  const params    = new URLSearchParams(window.location.search);
+  const licenseKey = params.get('preapproval_id') || params.get('subscription_id');
+
+  if (licenseKey) {
+    document.getElementById('key-section').style.display = 'block';
+    document.getElementById('key-display').textContent = licenseKey;
+  } else {
+    document.getElementById('no-key-section').style.display = 'block';
+  }
+
+  function copyKey() {
+    const key = document.getElementById('key-display').textContent;
+    navigator.clipboard.writeText(key).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '¡Copiado!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "applyfast-backend",
+  "version": "1.0.0",
+  "description": "Backend de suscripciones para ApplyFast",
+  "engines": { "node": ">=18" }
+}
